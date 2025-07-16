@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi primer amor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%; min-height: 100vh; margin: 0; padding: 0;
+    }
+    body {
+      min-height: 100vh; width: 100vw;
+      background: linear-gradient(135deg, #001f3f 0%, #003366 40%, #b3e6ff 100%);
+      color: white; font-family: 'Quicksand', Arial, sans-serif;
+      overflow: hidden; position: relative; text-align: center;
+    }
+    .poema {
+      position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+      width: 85%; max-width: 600px; padding: 24px 28px;
+      font-size: 1.08em; line-height: 1.7em; color: #e0f7ff;
+      text-shadow: 0 0 8px #003366, 0 0 2px #fff;
+      background: rgba(0, 0, 50, 0.45); border-radius: 24px;
+      border: 1.5px solid #3399ff88; box-shadow: 0 0 24px #00336688;
+    }
+    .poema p {
+      font-family: 'Quicksand', Arial, sans-serif; font-size: 1.18em; margin: 0;
+    }
+    .mariposa {
+      position: absolute; top: 5%; left: 50%; width: 90px; height: 90px;
+      transform: translateX(-50%); animation: flotar 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 24px #00cfff) drop-shadow(0 0 12px #ffb6c1);
+      transition: filter 0.3s; cursor: pointer; z-index: 10;
+    }
+    .mariposa:hover {
+      filter: drop-shadow(0 0 40px #ff69b4) drop-shadow(0 0 24px #00cfff);
+    }
+    @keyframes flotar {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 20px); }
+    }
+    .corazon {
+      position: absolute; width: 20px; height: 20px;
+      background: linear-gradient(135deg, #ffb6c1, #ff69b4, #e63946, #ffc0cb);
+      clip-path: circle(50%); opacity: 0.6;
+      animation: flotarCorazon 10s linear infinite;
+    }
+    @keyframes flotarCorazon {
+      0% { transform: translateY(100vh) scale(0.8); opacity: 0.8; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+    .corazon-azul {
+      position: fixed; background: linear-gradient(135deg, #b3e6ff, #0074d9 60%, #1565c0 100%);
+      width: 32px; height: 32px;
+      clip-path: path('M16 29 Q2 18 16 6 Q30 18 16 29 Z');
+      opacity: 0.7; animation: flotarCorazonAzul 10s linear infinite; z-index: 2;
+    }
+    @keyframes flotarCorazonAzul {
+      0% { transform: translateY(100vh) scale(0.8); opacity: 0.8; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+  </style>
+  <style>
+    .flor-azul {
+      position: absolute;
+      pointer-events: none;
+      width: 44px;
+      height: 44px;
+      z-index: 30;
+      animation: florAnimada 1.2s ease-out forwards;
+    }
+    @keyframes florAnimada {
+      0% { transform: scale(0.2); opacity: 0.7; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(0.7); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <audio id="miAudio" autoplay loop controls style="position:fixed;top:12px;left:12px;z-index:100;width:320px;">
+    <source src="https://files.catbox.moe/7vm2o1.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio HTML5.
+  </audio>
+  <div class="mariposa" id="mariposa">
+    <svg viewBox="0 0 120 80" width="120" height="80" style="overflow:visible;">
+      <defs>
+        <radialGradient id="realWing" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e3f2fd"/>
+          <stop offset="60%" stop-color="#1976d2"/>
+          <stop offset="100%" stop-color="#0d47a1"/>
+        </radialGradient>
+        <linearGradient id="realBody" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#222"/>
+          <stop offset="100%" stop-color="#444"/>
+        </linearGradient>
+      </defs>
+      <path d="M60,40 Q20,10 18,70 Q40,60 60,60" fill="url(#realWing)" stroke="#0d47a1" stroke-width="2"/>
+      <path d="M60,40 Q100,10 102,70 Q80,60 60,60" fill="url(#realWing)" stroke="#0d47a1" stroke-width="2"/>
+      <ellipse cx="38" cy="40" rx="10" ry="18" fill="#fff" opacity="0.18"/>
+      <ellipse cx="82" cy="40" rx="10" ry="18" fill="#fff" opacity="0.18"/>
+      <ellipse cx="50" cy="55" rx="4" ry="8" fill="#1565c0" opacity="0.25"/>
+      <ellipse cx="70" cy="55" rx="4" ry="8" fill="#1565c0" opacity="0.25"/>
+      <rect x="56" y="40" width="8" height="28" rx="4" fill="url(#realBody)" />
+      <ellipse cx="60" cy="38" rx="5" ry="7" fill="#222" />
+      <path d="M60 32 Q55 18 52 32" stroke="#222" stroke-width="2" fill="none"/>
+      <path d="M60 32 Q65 18 68 32" stroke="#222" stroke-width="2" fill="none"/>
+    </svg>
+  </div>
+  <div class="poema">
+    <p>
+      Esa mujer tan pequeña como una flor,<br>
+      Como un pétalo a la deriva del viento.<br>
+      Me atrae a ella como la fuerza que ejerce la tierra,<br>
+      De pronto, caí a ella sin razón,<br>
+      Tal como lo hizo la manzana de Newton.<br>
+      Con un latido, como un fuerte latido,<br>
+      Mi corazón llegó del cielo a la tierra<br>
+      en un vertiginoso movimiento.<br>
+      <strong>Mi primer amor</strong>.
+    </p>
+  </div>
+  <div id="lluvia-iniciales"></div>
+  <script>
+    // Flores azules animadas al tocar/clic
+    function crearFlorAzul(x, y) {
+      const flor = document.createElement('div');
+      flor.className = 'flor-azul';
+      flor.style.left = (x - 22) + 'px';
+      flor.style.top = (y - 22) + 'px';
+      flor.innerHTML = `
+        <svg viewBox="0 0 44 44" width="44" height="44">
+          <g>
+            <!-- Flor azul realista tipo margarita -->
+            <circle cx="22" cy="22" r="7" fill="#1976d2"/>
+            <g>
+              <ellipse cx="22" cy="7" rx="4" ry="11" fill="#90caf9" stroke="#1976d2" stroke-width="1.2"/>
+              <ellipse cx="22" cy="37" rx="4" ry="11" fill="#90caf9" stroke="#1976d2" stroke-width="1.2"/>
+              <ellipse cx="7" cy="22" rx="11" ry="4" fill="#64b5f6" stroke="#1976d2" stroke-width="1.2"/>
+              <ellipse cx="37" cy="22" rx="11" ry="4" fill="#64b5f6" stroke="#1976d2" stroke-width="1.2"/>
+              <ellipse cx="12" cy="12" rx="4" ry="9" fill="#42a5f5" stroke="#1976d2" stroke-width="1"/>
+              <ellipse cx="32" cy="12" rx="4" ry="9" fill="#42a5f5" stroke="#1976d2" stroke-width="1"/>
+              <ellipse cx="12" cy="32" rx="4" ry="9" fill="#42a5f5" stroke="#1976d2" stroke-width="1"/>
+              <ellipse cx="32" cy="32" rx="4" ry="9" fill="#42a5f5" stroke="#1976d2" stroke-width="1"/>
+            </g>
+            <!-- Centro amarillo para realismo -->
+            <circle cx="22" cy="22" r="4.5" fill="#ffe066" stroke="#e3c800" stroke-width="1"/>
+          </g>
+        </svg>`;
+      document.body.appendChild(flor);
+      // Sorpresa: mariposa azul animada
+      crearMiniMariposa(x, y);
+      setTimeout(() => flor.remove(), 1200);
+    }
+    function crearMiniMariposa(x, y) {
+      const mariposa = document.createElement('div');
+      mariposa.className = 'mini-mariposa';
+      mariposa.style.left = (x - 18) + 'px';
+      mariposa.style.top = (y - 18) + 'px';
+      mariposa.innerHTML = `
+        <svg viewBox="0 0 36 36" width="36" height="36">
+          <defs>
+            <radialGradient id="wingMini" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#e3f2fd"/>
+              <stop offset="60%" stop-color="#1976d2"/>
+              <stop offset="100%" stop-color="#0d47a1"/>
+            </radialGradient>
+          </defs>
+          <path d="M18,18 Q4,4 6,30 Q14,28 18,28" fill="url(#wingMini)" stroke="#1976d2" stroke-width="1"/>
+          <path d="M18,18 Q32,4 30,30 Q22,28 18,28" fill="url(#wingMini)" stroke="#1976d2" stroke-width="1"/>
+          <ellipse cx="18" cy="18" rx="4" ry="7" fill="#1976d2"/>
+          <ellipse cx="18" cy="14" rx="2.5" ry="3.5" fill="#222"/>
+        </svg>`;
+      mariposa.style.position = 'absolute';
+      mariposa.style.zIndex = 31;
+      mariposa.style.pointerEvents = 'none';
+      mariposa.animate([
+        {transform: 'scale(0.7) translateY(0px)', opacity: 0.8},
+        {transform: 'scale(1.1) translateY(-30px)', opacity: 1},
+        {transform: 'scale(0.7) translateY(-60px)', opacity: 0}
+      ], {
+        duration: 1400,
+        easing: 'ease-out',
+        fill: 'forwards'
+      });
+      document.body.appendChild(mariposa);
+      setTimeout(() => mariposa.remove(), 1400);
+    }
+    document.addEventListener('pointerdown', function(e) {
+      // Evita crear flor sobre controles de audio
+      if (e.target.closest('audio')) return;
+      crearFlorAzul(e.clientX, e.clientY);
+    });
+    // Corazones azules flotando en el fondo
+    for(let i=0;i<18;i++){
+      const heart=document.createElement('div');
+      heart.className='corazon-azul';
+      heart.style.left=(Math.random()*100)+'vw';
+      heart.style.top=(Math.random()*100)+'vh';
+      heart.style.width=heart.style.height=(24+Math.random()*32)+'px';
+      heart.style.opacity=0.5+Math.random()*0.4;
+      heart.style.position='fixed';
+      heart.style.zIndex=2;
+      heart.style.animationDuration=(6+Math.random()*6)+'s';
+      document.body.appendChild(heart);
+    }
+    // Corazones flotando con tonos románticos
+    const tonos=['#ffb6c1','#ff69b4','#e63946','#ffc0cb','#fff0f5','#ffdde4'];
+    for(let i=0;i<40;i++){
+      const heart=document.createElement('div');
+      heart.classList.add('corazon');
+      heart.style.left=Math.random()*100+'vw';
+      heart.style.animationDuration=(6+Math.random()*5)+'s';
+      heart.style.background=tonos[Math.floor(Math.random()*tonos.length)];
+      document.body.appendChild(heart);
+    }
+    // Mariposa explosión
+    const mariposa = document.getElementById('mariposa');
+    mariposa.addEventListener('click', function (e) {
+      const explosion = document.createElement('div');
+      explosion.className = 'explosion';
+      explosion.style.left = `${e.pageX}px`;
+      explosion.style.top = `${e.pageY}px`;
+      // Sonido de explosión suave
+      const audio = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_115b6b2e3b.mp3');
+      audio.volume = 0.3;
+      audio.play();
+      const colores = ['#ffb6c1', '#ffe4e1', '#add8e6', '#fffacd', '#e0ffff', '#ffc0cb', '#b0e0e6', '#f5e6ff', '#ffd700'];
+      for (let i = 0; i < 16; i++) {
+        const part = document.createElement('span');
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = 60 + Math.random() * 40;
+        part.style.setProperty('--x', `${Math.cos(angle) * radius}px`);
+        part.style.setProperty('--y', `${Math.sin(angle) * radius}px`);
+        part.style.background = colores[Math.floor(Math.random() * colores.length)];
+        part.style.opacity = 0.6 + Math.random() * 0.4;
+        part.style.width = part.style.height = (8 + Math.random() * 14) + 'px';
+        part.style.transform = 'scale(0.5)';
+        part.style.boxShadow = '0 0 12px #ffd700, 0 0 4px #fff';
+        setTimeout(() => {
+          part.style.transform = 'scale(1)';
+        }, 10);
+        explosion.appendChild(part);
+      }
+      document.body.appendChild(explosion);
+      setTimeout(() => {
+        explosion.remove();
+      }, 900);
+    });
+    // Efecto lluvia de iniciales D y S
+    const lluvia = document.getElementById('lluvia-iniciales');
+    for(let i=0;i<18;i++){
+      const letra = document.createElement('span');
+      letra.textContent = i%2===0 ? 'D' : 'S';
+      letra.style.position = 'fixed';
+      letra.style.left = Math.random()*100+'vw';
+      letra.style.top = '-40px';
+      letra.style.fontSize = '1.5em';
+      letra.style.color = '#ffd1dc';
+      letra.style.opacity = 0.7;
+      letra.style.pointerEvents = 'none';
+      letra.style.zIndex = 20;
+      letra.style.fontWeight = 'bold';
+      letra.style.textShadow = '0 0 8px #e63946, 0 0 2px #fff';
+      lluvia.appendChild(letra);
+      // Animación de caída
+      const dur = 3+Math.random()*3;
+      letra.animate([
+        {top: '-40px', opacity: 0.7},
+        {top: '100vh', opacity: 0.1}
+      ], {
+        duration: dur*1000,
+        iterations: Infinity,
+        easing: 'linear',
+        delay: Math.random()*2000
+      });
+    }
+  </script>
+</body>
+</html>
